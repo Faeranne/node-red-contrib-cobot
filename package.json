@@ -1,0 +1,21 @@
+{
+  "name": "node-red-contrib-cobot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Blixa Morgan (MrMakeIt) <blixa@projectmakeit.com>",
+  "node-red": {
+    "nodes": {
+      "cobot-server": "cobot-server.js",
+      "cobot-resources": "cobot-resources.js",
+      "cobot-bookings": "cobot-bookings.js",
+      "cobot-resource": "cobot-resource.js"
+    }
+  },
+  "license": "MIT",
+  "dependencies": {
+    "dateformat": "^2.0.0",
+    "request": "^2.81.0",
+    "superagent": "^3.5.2"
+  }
+}

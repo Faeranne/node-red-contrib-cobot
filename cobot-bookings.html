@@ -1,0 +1,31 @@
+<script type="text/javascript">
+  RED.nodes.registerType('cobot-bookings',{
+    category: 'Cobot',
+    color: '#a6bbcf',
+    defaults: {
+      name: {value: ""},
+      resource: {value:"",type:"cobot-resource"}
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "white-globe.png",
+    label: function(){
+      return this.name||this.subDomain||"Cobot: Bookings"
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="cobot-bookings">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-resource"><i class="icon-tag"></i> Server</label>
+    <input type="text" id="node-input-resource" placeholder="Server">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="cobot-bookings">
+  <p>A node that can access the Cobot API</p>
+</script>

@@ -1,0 +1,28 @@
+<script type="text/javascript">
+  RED.nodes.registerType('cobot-resource',{
+    category: 'config',
+    defaults: {
+      name: {value: ""},
+      resourceid: {value: ""},
+      server: {value:"",type:"cobot-server"}
+    },
+    label: function(){
+      return this.name||this.id||"Cobot"
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="cobot-resource">
+  <div class="form-row">
+    <label for="node-config-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-config-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-resourceid"><i class="icon-tag"></i> Resource ID</label>
+    <input type="text" id="node-config-input-resourceid" placeholder="me">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-server"><i class="icon-tag"></i> Cobot Server</label>
+    <input type="password" id="node-config-input-server" placeholder="1234567890">
+  </div>
+</script>

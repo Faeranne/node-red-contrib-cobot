@@ -1,0 +1,38 @@
+<script type="text/javascript">
+  RED.nodes.registerType('cobot',{
+    category: 'function',
+    color: '#a6bbcf',
+    defaults: {
+      name: {value: ""},
+      subDomain: {value: ""}
+    },
+    credentials: {
+      token: {value: ""}
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "white-globe.png",
+    label: function(){
+      return this.name||this.subDomain||"Cobot"
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="cobot">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-subDomain"><i class="icon-tag"></i> Subdomain</label>
+    <input type="text" id="node-input-subDomain" placeholder="me">
+  </div>
+  <div class="form-row">
+    <label for="node-input-token"><i class="icon-tag"></i> Token</label>
+    <input type="password" id="node-input-token" placeholder="1234567890">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="cobot">
+  <p>A node that can access the Cobot API</p>
+</script>
