@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "author": "Blixa Morgan (MrMakeIt) <blixa@projectmakeit.com>",
+  "keywords":{
+    "node-red",
+    "cobot"
+  },
   "node-red": {
     "nodes": {
       "cobot-server": "cobot-server.js",
