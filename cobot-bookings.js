@@ -13,9 +13,8 @@ module.exports = function(RED){
       var toDate = new Date(msg.to);
       var from = dateFormat(fromDate, "yyyy-mm-dd HH:MM:ss '-0600'") 
       var to = dateFormat(toDate, "yyyy-mm-dd HH:MM:ss '-0600'") 
-      node.log(URL);
-      node.log(node.serverConfig.token);
-      request(URL)
+      request
+      .get(URL)
       .query({from:from,to:to})
       .set('Authorization', 'Bearer '+node.serverConfig.token)
       .end(function(err, res){
