@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-cobot",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Node-red nodes providing access to Cobot's API",
   "main": "index.js",
   "author": "Blixa Morgan (MrMakeIt) <blixa@projectmakeit.com>",

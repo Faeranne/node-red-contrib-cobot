@@ -8,6 +8,56 @@
     },
     label: function(){
       return this.name||this.id||"Cobot"
+    },
+    oneditprepare: function(){
+      var htmlID = '#node-config-input-resourceid';
+      var htmlText  = '<input type="text" id="node-config-input-resourceid" placeholder="Resource ID" style="width:100%;">';
+      var comboText = '<select            id="node-config-input-resourceid" placeholder="Resource ID" style="width:100%;">';
+      function enableCombobox() {
+        var val = $(htmlID).val();
+	var serverConfig = RED.nodes.node($('#node-config-input-server').val());
+	if( serverConfig && serverConfig.id ){
+          $.getJSON('node-cobot/resources', {server: serverConfig.id})
+            .done(function(data){
+              function findFunc(resource){
+                return (resource.id === val);
+              }
+	      function sortFunc(a, b){
+                return (a.name || a.subDomain).localeCompare((b.name || b.subDomain));
+              }
+	      if(!data || data.length <= 0){
+                RED.notify("Invalid Cobot Setup. No Resources Found", "error");
+		return;
+              }
+	      $('#node-config-input-lookup-resources > i').toggleClass('fa-search', false).toggleClass('fa-edit', true);
+	      $(htmlID).replaceWith(comboText);
+	      data = data.sort(sortFunc);
+	      var input = $(htmlID);
+	      data.forEach(function(resource){
+		var nextOption = $('<option>').val(resource.id).text(resource.name);
+                input.append(nextOption);
+              });
+              input.val(val);
+	    })
+	    .fail(function(err) {
+              RED.notify(err.responseText, "error");
+	    });
+	}
+      }
+
+      function enableTextbox() {
+        var val = $(htmlID).val();
+	$('#node-config-input-lookup-resources > i').toggleClass('fa-search', true).toggleClass('fa-edit',false);
+	$(htmlID).replaceWith(htmlText);
+	$(htmlID).val(val);
+      }
+      $('#node-config-input-lookup-resources > i').click( function(){
+        if ($(htmlID).attr('type') === 'text'){
+          enableCombobox();
+	} else {
+          enableTextbox();
+        }
+      });
     }
   });
 </script>
@@ -19,7 +69,12 @@
   </div>
   <div class="form-row">
     <label for="node-config-input-resourceid"><i class="icon-tag"></i> Resource ID</label>
-    <input type="text" id="node-config-input-resourceid" placeholder="me">
+    <div style="display: inline-block; position: relative; width: 70%; height: 20px;">
+      <div style="position: absolute; left: 0px; right: 40px;">
+        <input type="text" id="node-config-input-resourceid" placeholder="Press button to listh available resources" style="width: 100%;">
+      </div>
+      <a id="node-config-input-lookup-resources" class="editor-button" style="position: absolute; right: 0px; top: 0px;"><i class="fa fa-search"></i></a>
+    </div>
   </div>
   <div class="form-row">
     <label for="node-config-input-server"><i class="icon-tag"></i> Cobot Server</label>
