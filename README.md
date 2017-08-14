@@ -1,6 +1,6 @@
 # Node Red Cobot API
 
-[Cobot on Node Red Flows](https://flows.nodered.org/node/node-red-contrib-cobot|Node Red Flows)
+[Cobot on Node Red Flows](https://flows.nodered.org/node/node-red-contrib-cobot)
 
 Provides Cobot API bindings to Node Red.
 
