@@ -11,8 +11,8 @@ module.exports = function(RED){
     node.on('input', function(msg) {
       var fromDate = new Date(msg.from);
       var toDate = new Date(msg.to);
-      var from = dateFormat(fromDate, "yyyy-mm-dd HH:MM:ss '-0600'") 
-      var to = dateFormat(toDate, "yyyy-mm-dd HH:MM:ss '-0600'") 
+      var from = dateFormat(fromDate, "yyyy-mm-dd HH:MM:ss '+0000'", true) 
+      var to = dateFormat(toDate, "yyyy-mm-dd HH:MM:ss '+0000'", true) 
       request
       .get(URL)
       .query({from:from,to:to})
